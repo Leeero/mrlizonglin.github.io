@@ -344,7 +344,11 @@
         
           
           一：命令
-let命令是es6新增的声明变量的命令，用户类似于js的var，但是let声明的变量只在所
+let命令是es6新增的声明变量的命令，用户类似于js的var，但是let声明的变量只在所在的块内生效。
+const命令声明了一个不允许改变的常量，即一旦声明，该常量的值就不能再改变。并且在使用过程中一旦使用const声明了变量，就必须立刻给其赋值，不能留到以后再赋值，否则会报错。
+
+
+二
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -497,7 +501,8 @@ let命令是es6新增的声明变量的命令，用户类似于js的var，但是
           
 在iphone X中普通的样式会有适配问题，提供一个简单的解决办法解决适配：
 
-在index.ht
+在index.html文件的头部添加&lt;meta&gt;标签，并且写入viewport-fit=cover属性为iphone X自动适配，并且在css样式里写入：
+1234567body&#123;   paddi
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -648,7 +653,13 @@ let命令是es6新增的声明变量的命令，用户类似于js的var，但是
         
           
           
-TypeScript是JavaScript的超集，使用TS可以完美解决JS是弱类语言这一隐患，它最
+TypeScript是JavaScript的超集，使用TS可以完美解决JS是弱类语言这一隐患，它最大的特点就是静态类型检查。
+
+
+插件
+
+vue-class-component （强化vue组件，使用TS增强VUE组件）
+vue-property-decorator （上面这个插件的增强版，推荐使
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -799,7 +810,12 @@ TypeScript是JavaScript的超集，使用TS可以完美解决JS是弱类语言�
         
           
           
-在邮件中嵌入HTML是常见的需求，但是由于各大邮箱客户端对HTML支持的不同、并且有限，所以在写这
+在邮件中嵌入HTML是常见的需求，但是由于各大邮箱客户端对HTML支持的不同、并且有限，所以在写这类需求的时候，需要注意一下几点：
+
+
+邮件使用table+css布局
+邮件主要部分在body内部，所以样式一定要写成内嵌的，不能在head标签中写style，也不能外联。
+不能用浮动的方式定位。pos
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -954,7 +970,11 @@ iview框架使用过程中遇到的一些坑以及填坑结果
 
 
 form表单清空：
-问题：清空表单时部分fo
+问题：清空表单时部分form无法清空。
+解决：需要在每一个FormItem上添加prop=&quot;&quot;并且它的值必须与data里定义的值相同。
+
+表格里的Icon添加点击事件：
+问题：给Icon添加点击事件时使用
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1107,7 +1127,12 @@ form表单清空：
           
 在使用git统一协作时，规范的commit message是一个很棒的开端：
 
-格式：&lt;ty
+格式：&lt;type&gt;(scope):&lt;subject&gt;
+
+type：用于说明commit的类别，共以下7个字段：
+feat：开发的新功能
+fix：bug的修复
+docs：文档、README相关的修
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1260,7 +1285,7 @@ form表单清空：
           
 在某些应用场景可能会遇到需要计算用户在某页面的停留时间的类似需求，特总结如下：
 
-12345678
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585
           ...
           <!--noindex-->
           <div class="post-button text-center">
