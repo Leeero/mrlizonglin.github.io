@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MrLee">
 <meta property="og:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-25T08:20:24.653Z">
+<meta property="og:updated_time" content="2018-07-26T07:17:37.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6入门">
 <meta name="twitter:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
@@ -465,9 +465,36 @@
 <ol>
 <li>在使用箭头函数的时候，不能使用new命令。</li>
 <li>箭头函数里的this总是指向函数定义生效时所在对象。因为箭头函数没有自己的this，所以它内部的this就是外层代码的this。</li>
+<li>箭头函数也可以嵌套使用：将被嵌套的函数用括号包起来然后放在箭头函数的后面，可以进行多层嵌套。</li>
 </ol>
 </blockquote>
+<hr>
+<p>#### </p>
 </li>
+</ul>
+<h4 id="六：数组的扩展"><a href="#六：数组的扩展" class="headerlink" title="六：数组的扩展"></a>六：数组的扩展</h4><ul>
+<li><p><strong>扩展运算符</strong></p>
+<p>扩展运算符（spread）也就是<code>...</code>，它其实可以看成rest参数的逆运算，因为它会将一个数组转为用逗号分开的参数序列。</p>
+<p><strong>作用：</strong></p>
+<ol>
+<li><p>代替函数的apply方法。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ES5 的写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">f.apply(<span class="literal">null</span>, args);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> args = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line">f(...args);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>复制数组。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a1 = [<span class="number">1</span>, <span class="number">2</span>];</span><br><span class="line"><span class="comment">// 写法一</span></span><br><span class="line"><span class="keyword">const</span> a2 = [...a1];</span><br><span class="line"><span class="comment">// 写法二</span></span><br><span class="line"><span class="keyword">const</span> [...a2] = a1;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>合并数组。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</span><br><span class="line"><span class="keyword">const</span> arr2 = [<span class="string">'c'</span>];</span><br><span class="line"><span class="keyword">const</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>];</span><br><span class="line"></span><br><span class="line">[...arr1, ...arr2, ...arr3]</span><br><span class="line"><span class="comment">// [ 'a', 'b', 'c', 'd', 'e' ]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>与解构赋值配合使用。</p>
+</li>
+<li><p>将字符串转换成数组。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...<span class="string">'hello'</span>]</span><br><span class="line"><span class="comment">// [ "h", "e", "l", "l", "o" ]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li></li>
+</ol>
+</li>
+<li></li>
 </ul>
 
       
@@ -672,7 +699,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一：命令"><span class="nav-number">1.</span> <span class="nav-text">一：命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二：解构"><span class="nav-number">2.</span> <span class="nav-text">二：解构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三：字符串的扩展"><span class="nav-number">3.</span> <span class="nav-text">三：字符串的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四：数值的扩展"><span class="nav-number">4.</span> <span class="nav-text">四：数值的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五：函数的扩展"><span class="nav-number">5.</span> <span class="nav-text">五：函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">5.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rest参数"><span class="nav-number">5.2.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式"><span class="nav-number">5.3.</span> <span class="nav-text">严格模式</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一：命令"><span class="nav-number">1.</span> <span class="nav-text">一：命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二：解构"><span class="nav-number">2.</span> <span class="nav-text">二：解构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三：字符串的扩展"><span class="nav-number">3.</span> <span class="nav-text">三：字符串的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四：数值的扩展"><span class="nav-number">4.</span> <span class="nav-text">四：数值的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五：函数的扩展"><span class="nav-number">5.</span> <span class="nav-text">五：函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">5.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rest参数"><span class="nav-number">5.2.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式"><span class="nav-number">5.3.</span> <span class="nav-text">严格模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六：数组的扩展"><span class="nav-number">6.</span> <span class="nav-text">六：数组的扩展</span></a></li></ol></div>
             
 
           </div>
