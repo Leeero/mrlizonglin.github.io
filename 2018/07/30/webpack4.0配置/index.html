@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="webpack,基础工具," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="webpack是一个打包工具，他的宗旨是一切静态资源即可打包。">
+<meta name="keywords" content="webpack,基础工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack4.0配置">
+<meta property="og:url" content="http://yoursite.com/2018/07/30/webpack4.0配置/index.html">
+<meta property="og:site_name" content="MrLee">
+<meta property="og:description" content="webpack是一个打包工具，他的宗旨是一切静态资源即可打包。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/var/folders/43/z79_kbgn4s736j857cnhx0_r0000gn/T/abnerworks.Typora/image-20180730194513880.png">
+<meta property="og:updated_time" content="2018-07-30T11:48:34.993Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack4.0配置">
+<meta name="twitter:description" content="webpack是一个打包工具，他的宗旨是一切静态资源即可打包。">
+<meta name="twitter:image" content="http://yoursite.com/var/folders/43/z79_kbgn4s736j857cnhx0_r0000gn/T/abnerworks.Typora/image-20180730194513880.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/07/30/webpack4.0配置/"/>
+
+
+
+
+
+  <title>webpack4.0配置 | MrLee</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <a href="https://github.com/mrlizonglin" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">MrLee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/webpack4.0配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Li Zonglin">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MrLee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">webpack4.0配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-30T19:41:46+08:00">
+                2018-07-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具/" itemprop="url" rel="index">
+                    <span itemprop="name">工具</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>webpack是一个打包工具，他的宗旨是一切静态资源即可打包。</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>webpack详解</strong></p>
+<p>webpack是一个打包工具，他的宗旨是一切静态资源即可打包。有人就会问为什么要webpack？webpack是现代前端技术的基石，常规的开发方式，比如jquery,html,css静态网页开发已经落后了。现在是MVVM的时代，数据驱动界面。webpack将现代js开发中的各种新型有用的技术，集合打包。webpack的描述铺天盖地，我就不浪费大家的时间了。理解下这种图就知道webpack的生态圈了:</p>
+<p><img src="/var/folders/43/z79_kbgn4s736j857cnhx0_r0000gn/T/abnerworks.Typora/image-20180730194513880.png" alt="image-20180730194513880"></p>
+<p><strong>webpack4.0的配置</strong></p>
+<blockquote>
+<p>const path = require(‘path’);  //引入node的path模块</p>
+<p>const webpack = require(‘webpack’); //引入的webpack,使用lodash</p>
+<p>const HtmlWebpackPlugin = require(‘html-webpack-plugin’)  //将html打包</p>
+<p>const ExtractTextPlugin = require(‘extract-text-webpack-plugin’)     //打包的css拆分,将一部分抽离出来  </p>
+<p>const CopyWebpackPlugin = require(‘copy-webpack-plugin’)</p>
+<p>// console.log(path.resolve(__dirname,’dist’)); //物理地址拼接</p>
+<p>module.exports = {</p>
+<p>​    entry: ‘./src/index.js’, //入口文件  在vue-cli main.js</p>
+<p>​    output: {       //webpack如何输出</p>
+<p>​        path: path.resolve(__dirname, ‘dist’), //定位，输出文件的目标路径</p>
+<p>​        filename: ‘[name].js’</p>
+<p>​    },</p>
+<p>​    module: {       //模块的相关配置</p>
+<p>​        rules: [     //根据文件的后缀提供一个loader,解析规则</p>
+<p>​            {</p>
+<p>​                test: /.js$/,  //es6 =&gt; es5</p>
+<p>​                include: [</p>
+<p>​                    path.resolve(__dirname, ‘src’)</p>
+<p>​                ],</p>
+<p>​                // exclude:[], 不匹配选项（优先级高于test和include）</p>
+<p>​                use: ‘babel-loader’</p>
+<p>​            },</p>
+<p>​            {</p>
+<p>​                test: /.less$/,</p>
+<p>​                use: ExtractTextPlugin.extract({</p>
+<p>​                    fallback: ‘style-loader’,</p>
+<p>​                    use: [</p>
+<p>​                    ‘css-loader’,</p>
+<p>​                    ‘less-loader’</p>
+<p>​                    ]</p>
+<p>​                })</p>
+<p>​            },</p>
+<p>​            {       //图片loader</p>
+<p>​                test: /.(png|jpg|gif)$/,</p>
+<p>​                use: [</p>
+<p>​                    {</p>
+<p>​                        loader: ‘file-loader’ //根据文件地址加载文件</p>
+<p>​                    }</p>
+<p>​                ]</p>
+<p>​            }</p>
+<p>​        ]                  </p>
+<p>​    },</p>
+<p>​    resolve: { //解析模块的可选项  </p>
+<p>​        // modules: [ ]//模块的查找目录 配置其他的css等文件</p>
+<p>​        extensions: [“.js”, “.json”, “.jsx”,”.less”, “.css”],  //用到文件的扩展名</p>
+<p>​        alias: { //模快别名列表</p>
+<p>​            utils: path.resolve(__dirname,’src/utils’)</p>
+<p>​        }</p>
+<p>​    },</p>
+<p>​    plugins: [  //插进的引用, 压缩，分离美化</p>
+<p>​        new ExtractTextPlugin(‘[name].css’),  //[name] 默认  也可以自定义name  声明使用</p>
+<p>​        new HtmlWebpackPlugin({  //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线</p>
+<p>​            file: ‘index.html’, //打造单页面运用 最后运行的不是这个</p>
+<p>​            template: ‘src/index.html’  //vue-cli放在跟目录下</p>
+<p>​        }),</p>
+<p>​        new CopyWebpackPlugin([  //src下其他的文件直接复制到dist目录下</p>
+<p>​            { from:’src/assets/favicon.ico’,to: ‘favicon.ico’ }</p>
+<p>​        ]),</p>
+<p>​        new webpack.ProvidePlugin({  //引用框架 jquery  lodash工具库是很多组件会复用的，省去了import</p>
+<p>​            ‘_’: ‘lodash’  //引用webpack</p>
+<p>​        })</p>
+<p>​    ],</p>
+<p>​    devServer: {  //服务于webpack-dev-server  内部封装了一个express</p>
+<p>​        port: ‘8080’,</p>
+<p>​        before(app) {</p>
+<p>​            app.get(‘/api/test.json’, (req, res) =&gt; {</p>
+<p>​                res.json({</p>
+<p>​                    code: 200,</p>
+<p>​                    message: ‘Hello World’</p>
+<p>​                })</p>
+<p>​            })</p>
+<p>​        }</p>
+<p>​    }</p>
+<p>}</p>
+</blockquote>
+<p><strong>一、前端环境搭建</strong></p>
+<p>我们使用npm或yarn来安装webpack</p>
+<blockquote>
+<p>npm install webpack webpack-cli -g</p>
+<p># 或者</p>
+<p>yarn global add webpack webpack-cli</p>
+</blockquote>
+<p>为什么webpack会分为两个文件呢？在webpack3中，webpack本身和它的cli以前都是在同一个包中，但在第4版中，他们已经将两者分开来更好地管理它们。</p>
+<p>新建一个webpack的文件夹，在其下新建一个try-webpack(防止init时项目名和安装包同名)并初始化和配置webpack。</p>
+<blockquote>
+<p>npm init -y  //-y 默认所有的配置</p>
+<p>yarn add webpack webpack-cli -D  //-D webpack安装在devDependencies环境中</p>
+</blockquote>
+<p><strong>二、部署webpack</strong></p>
+<p>在上面搭建好的环境项目中，我们来到package.json里配置我们的scripts,让webpack</p>
+<blockquote>
+<p> “scripts”: {</p>
+<p>​    “build”: “webpack –mode production” //我们在这里配置，就可以使用npm run build 启动我们的webpack</p>
+<p>  },</p>
+<p>  “devDependencies”: {</p>
+<p>​    “webpack”: “^4.16.0”,</p>
+<p>​    “webpack-cli”: “^3.0.8”</p>
+<p>  }</p>
+</blockquote>
+<p>配置好我们webpack的运行环境时，联想下vue-cli。平时使用vue-cli会自动帮我们配置并生成项目。我们在src下进行项目的开发，最后npm run build 打包生成我们的dist的目录。不知道你是否还记得，还是让我们进入下一节让我们感受下这其中的正个流程吧。</p>
+<p><strong>三、npm run build 发生了什么</strong></p>
+<p>在我们的根项目下try-webpack新建一个src目录。在src目录下新建一个index.js文件。在里面我们可以写任意的代码，以案例为主:</p>
+<blockquote>
+<p>const a = 1;</p>
+</blockquote>
+<p>写完之后我们在终端运行我们的命令 npm run build；你就会发现新增了一个dist目录，里面存放着webpack打包好的main.js文件。这和我们在vue-cli里操作是一样的。</p>
+<p><strong>四、webpackp配置流程篇</strong></p>
+<p>我们在开发是一般会打包src下的什么文件呢？我们可以回忆一下，其实vue-cli项目src下不就这几点嘛：</p>
+<ul>
+<li>发布时需要的html，css，js</li>
+<li>css预编译器stylus，less，sass</li>
+<li>es6的高级语法</li>
+<li>图片资源.png，.gif，.ico，.jpg</li>
+<li>文件间的require</li>
+<li>别名@等修饰符</li>
+</ul>
+<p>那么我将会分这几点来讲解webpack中webpack.config.js的配置，跟着脚步，一步一步的来完成我们的流程线。</p>
+<p><strong>✍️Html在webpack中的配置</strong></p>
+<p>在项目的根目录try-webpack下新建webpack.config.js文件，以commonJS模块化机制向外输出,并且新建一个index.html。</p>
+<blockquote>
+<p>module.exports = {}</p>
+</blockquote>
+<p>配置我们的入口entry，在vue-cli里相当于跟目录下的main.js，我们的出口output。我们可以把webpack理解为一个工厂，进入相当于把各种各样的原料放进我们的工厂了，然后工厂进行一系列的打包操作把打包好的东西，向外输出，然后就可以去出售了(上线)。</p>
+<blockquote>
+<p>const path = require(‘path’); //引入我们的node模块里的path</p>
+<p>//测试下 console.log(path.resolve(__dirname,’dist’)); //物理地址拼接</p>
+<p>module.exports = {</p>
+<p>​    entry: ‘./src/index.js’, //入口文件  在vue-cli main.js</p>
+<p>​    output: {       //webpack如何向外输出</p>
+<p>​        path: path.resolve(__dirname, ‘dist’),//定位，输出文件的目标路径</p>
+<p>​        filename: ‘[name].js’ //文件名[name].js默认，也可自行配置</p>
+<p>​    },</p>
+</blockquote>
+<p>HTML打包我们需要安装引入html-webpack-plugin</p>
+<blockquote>
+<p>yarn add html-webpack-plugin -D //在开发环境中安装</p>
+<p>const HtmlWebpackPlugin = require(‘html-webpack-plugin’)  //引入打包我们的HTML</p>
+</blockquote>
+<p>在module.exports里配置我们的plugins(插件):</p>
+<blockquote>
+<p>plugins: [  //插进的引用, 压缩，分离美化</p>
+<p>​        new HtmlWebpackPlugin({  //将模板的头部和尾部添加css和js模板,dist 目录发布到服务器上，项目包。可以直接上线</p>
+<p>​            file: ‘index.html’, //打造单页面运用 最后运行的不是这个</p>
+<p>​            template: ‘src/index.html’  //vue-cli放在跟目录下</p>
+<p>​        }),</p>
+<p>​    ],</p>
+</blockquote>
+<p>配置好后，在终端输入npm run dev后webpack将我们的html打包好并且自动将我们的js引进来了。</p>
+<blockquote>
+<body><br><br>​    <p class="main">Hello World</p><br><br><script type="text/javascript" src="main.js"></script><br><br></body>
+</blockquote>
+<p>live-sever我们的dist目录，启动一个8080端口，我们就可以看到我们的Hello World了。这就是我们上线版的页面。</p>
+<p><strong>css在webpack中的配置</strong></p>
+<p>在我们vue-cli里，我们可以使用css去写我们的样式，也可以使用高级stylus，less，sass等预编译器。这里就以less为例，看看webpack怎么将他打包成一个css。</p>
+<blockquote>
+<p>.main {</p>
+<p>  color: red;</p>
+<p>}</p>
+</blockquote>
+<p>在src目录下新建我们的style.less文件，在配置之前我们需要npm我们的css-loader和sass-loader， sass</p>
+<blockquote>
+<p>yarn add css-loader less less-loader style-loader -D</p>
+</blockquote>
+<p>执行完上述命令我们在packge.json里可以看到我们的配置文件</p>
+<blockquote>
+<p>“devDependencies”: {</p>
+<p>​    “css-loader”: “^1.0.0”,</p>
+<p>​    “html-webpack-plugin”: “^3.2.0”,</p>
+<p>​    “sass”: “^1.9.0”,</p>
+<p>​    “sass-loader”: “^7.0.3”,</p>
+<p>​    “webpack”: “^4.16.0”,</p>
+<p>​    “webpack-cli”: “^3.0.8”</p>
+<p>  }</p>
+</blockquote>
+<p>安装好后，我们开始配置webpack.config.js文件。这里申明一下，我们的css在dist目录下需要和我们的HTML分离，这是还需引入我们的extract-text-webpack-plugin，先然我们安装下</p>
+<blockquote>
+<p>yarn add extract-text-webpack-plugin -D</p>
+</blockquote>
+<p>这里有一个坑，extract-text-webpack-plugin在4.0并不支持这样的安装，大家可自行chrome。于是我们选择换一种方式,选择4.00-beta.0版本的</p>
+<blockquote>
+<p>yarn add extract-text-webpack-plugin@last -D</p>
+</blockquote>
+<p>来到我们的module.exports里，完成moudel的配置</p>
+<blockquote>
+<p>const ExtractTextPlugin = require(‘extract-text-webpack-plugin’)     //打包的css拆分,将一部分抽离出来  </p>
+<p>module: {       //模块的相关配置</p>
+<p>​      rules: [     //根据文件的后缀提供一个loader,解析规则</p>
+<p>​          {</p>
+<p>​              test: /.less$/, //正则匹配我们以.less结尾的文件</p>
+<p>​              use: ExtractTextPlugin.extract({</p>
+<p>​                  fallback: ‘style-loader’,</p>
+<p>​                  use: [</p>
+<p>​                  ‘css-loader’,</p>
+<p>​                  ‘less-loader’</p>
+<p>​                  ]</p>
+<p>​              })</p>
+<p>​          },</p>
+<p>​      ]},</p>
+<p>   plugins：[</p>
+<p>​      new ExtractTextPlugin(‘[name].css’),  //[name] 默认  也可以自定义name  声明使用</p>
+<p>   ]</p>
+</blockquote>
+<p>我们在执行我们的npm run build之后并没有我们的css,为什么呢？原来在webpack配置里css in js。意思是在打包是我们的css是打包在我们的js里的，所有我们引入了extract-text-webpack-plugin插件将css从里面剥离出来。不过又一个问题，require的机制？</p>
+<blockquote>
+<p>在我们打包过程中，文件的引用require 按照顺序来打包，这就是文件依赖的机制。</p>
+</blockquote>
+<p>打包好后我们在live-server，发现我们的样式也上去了，并且css部分分离出来了。</p>
+<p><strong>js在webpack中的配置</strong></p>
+<p>现在随着es6的普及，越来越多的代码使用es6了，但是很多浏览器并不支持es6,比如async/awiat，const。因此需要我们引用babe来把我们es6的代码编译为es5。在跟目录下新建.babelrc,简单配置下</p>
+<p>{“presets”: [“env”]}</p>
+<p>安装我们的babel并在webpack.config.js里module/rules下进行配置</p>
+<blockquote>
+<p>yarn add babel-loader babel-core  abel-preset-env -D  //babel基本的三个文件</p>
+<p>{</p>
+<p>​    test: /.js$/,  //es6 =&gt; es5</p>
+<p>​    include: [</p>
+<p>​        path.resolve(__dirname, ‘src’)</p>
+<p>​    ],</p>
+<p>​    // exclude:[], 不匹配选项（优先级高于test和include）</p>
+<p>​    use: ‘babel-loader’</p>
+<p>},</p>
+</blockquote>
+<p><strong>图片资源在webpack中的配置</strong></p>
+<p>在src目录下新建一个assets文件，里面放置几张图片。安装file-loader根据文件地址加载文件</p>
+<p>yarn add file-loader -D</p>
+<p>在webpack.config.js里module/rules</p>
+<blockquote>
+<p>{  </p>
+<p>​    test: /.(png|jpg|gif)$/, //匹配所有格式的图片资源</p>
+<p>​    use: [</p>
+<p>​        {</p>
+<p>​            loader: ‘file-loader’</p>
+<p>​        }</p>
+<p>​    ]</p>
+<p>}</p>
+</blockquote>
+<p>别名(@)在webpack中的配置</p>
+<p>在src/index.js里我们引入</p>
+<blockquote>
+<p>const format = require(‘utils/format’)  // utils ?  没有相对路径  回想@  =&gt; 别名</p>
+<p>在src新建相应的文件。在format.js里接受一个参数并把它转成大写</p>
+<p>module.exports = function format(chars) {</p>
+<p>​    return chars.toUpperCase()</p>
+<p>}</p>
+</blockquote>
+<p>在webpack中如何配置我们的别名呢？在vue-cli中我们经常@一个文件夹，其意思就是在src目录下，现在我们去一探究竟。在module下,注意跟rules同级</p>
+<blockquote>
+<p>resolve: { //解析模块的可选项  </p>
+<p>​        // modules: [ ]//模块的查找目录 配置其他的css等文件</p>
+<p>​        extensions: [“.js”, “.json”, “.jsx”,”.less”, “.css”],  //用到文件的扩展名</p>
+<p>​        alias: { //模快别名列表</p>
+<p>​            utils: path.resolve(__dirname,’src/utils’)</p>
+<p>​        }</p>
+<p>​    },</p>
+</blockquote>
+<p>其他一些静态资源在webpack中的配置</p>
+<ul>
+<li>src下其他的文件直接复制到dist目录下，并不是每个文件都需要打包处理的，很多资源可能直接就可以复制过去。使用我们的 CopyWebpackPlugin插件</li>
+<li>引用框架 jquery lodash工具库是很多组件会复用的，省去了import。使用webpack.ProvidePlugin插件</li>
+</ul>
+<p><strong>五、npm run dev 发生了什么</strong></p>
+<p>在vue-cli中我们启动监听npm run dev可以时时监控我们src下文件的改动，那他到底发生了什么呢。在webpack里其实创建了一个node进程，通过webpack-dev-server其内部封装了一个node的express模块,其配置项如下</p>
+<blockquote>
+<p>“scripts”: { //在package.json里声明下使用脚本 npm run dev</p>
+<p>​    “build”: “webpack –mode production”,</p>
+<p>​    “start”: “webpack-dev-server –mode development”</p>
+<p>  },</p>
+<p>devServer: {  //在webpack.config.js里配置port</p>
+<p>​        port: ‘8080’,</p>
+<p>​        before(app) {</p>
+<p>​            app.get(‘/api/test.json’, (req, res) =&gt; {</p>
+<p>​                res.json({</p>
+<p>​                    code: 200,</p>
+<p>​                    message: ‘Hello World’</p>
+<p>​                })</p>
+<p>​            })</p>
+<p>​        }</p>
+<p>​    }  //服务于webpack-dev-server  内部封装了一个express</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------暂时没有更多<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack/" rel="tag"><i class="fa fa-tag"></i>webpack</a>
+          
+            <a href="/tags/基础工具/" rel="tag"><i class="fa fa-tag"></i>基础工具</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/27/web学习资源/" rel="next" title="视频资源">
+                <i class="fa fa-chevron-left"></i> 视频资源
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zODMzNi8xNDg2NA=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpg"
+                alt="Li Zonglin" />
+            
+              <p class="site-author-name" itemprop="name">Li Zonglin</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">博文</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/mrlizonglin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:mrlizonglin@126.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Li Zonglin</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+<!-- 页面点击小红心 --> 
+<script type="text/javascript" src="/js/src/love.js"></script>
