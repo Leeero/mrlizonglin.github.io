@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MrLee">
 <meta property="og:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-26T07:17:37.272Z">
+<meta property="og:updated_time" content="2018-07-30T03:30:41.169Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6入门">
 <meta name="twitter:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
@@ -491,8 +491,64 @@
 <li><p>将字符串转换成数组。例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[...<span class="string">'hello'</span>]</span><br><span class="line"><span class="comment">// [ "h", "e", "l", "l", "o" ]</span></span><br></pre></td></tr></table></figure>
 </li>
-<li></li>
 </ol>
+</li>
+<li><p><strong>Array.from()</strong></p>
+<p>Array.from()方法可以将两种对象转换成真正的数组：类似数组（其实其本质就是拥有<code>length</code>属性的对象）的对象和可遍历的对象。</p>
+<p>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arrayLike = &#123;</span><br><span class="line">    <span class="string">'0'</span>: <span class="string">'a'</span>,</span><br><span class="line">    <span class="string">'1'</span>: <span class="string">'b'</span>,</span><br><span class="line">    <span class="string">'2'</span>: <span class="string">'c'</span>,</span><br><span class="line">    length: <span class="number">3</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ES6的写法</span></span><br><span class="line"><span class="keyword">let</span> arr2 = <span class="built_in">Array</span>.from(arrayLike); <span class="comment">// ['a', 'b', 'c']</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>只要部署了<code>Iterator</code>接口的数据结构，都可以使用<code>Array.from()</code>方法转换成数组。</li>
+<li>Array.from()方法还可以接受第二个参数，它的第二个参数会对每个元素进行处理，然后返回处理过后的结果数组。<em>它类似于数组的<code>map</code>方法</em>。</li>
+</ul>
+</li>
+<li><p><strong>Array.of()</strong></p>
+<p>Array.of()方法会将一组值转换成数组。它主要是为了弥补Array()的不足，因为Array()会因为参数的不同，而导致输出不同的结果，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>(<span class="number">3</span>) <span class="comment">// [, , ,]</span></span><br><span class="line"><span class="built_in">Array</span>(<span class="number">3</span>, <span class="number">11</span>, <span class="number">8</span>) <span class="comment">// [3, 11, 8]</span></span><br></pre></td></tr></table></figure>
+<p>Array.of()基本上可以用来代替Array()，并且它不会因为参数的不同，而导致重载。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.of() <span class="comment">// []  如果没有参数，将返回空数组。</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="literal">undefined</span>) <span class="comment">// [undefined]</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="number">1</span>) <span class="comment">// [1]</span></span><br><span class="line"><span class="built_in">Array</span>.of(<span class="number">1</span>, <span class="number">2</span>) <span class="comment">// [1, 2]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数组实例的<code>copyWithin()</code></strong></p>
+<p>数组实例的<code>copyWithin()</code>方法，在当前数组内部，将指定位置的成员复制到其他位置，然后返回新数组。它接受三个参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.copyWithin(target, start = <span class="number">0</span>, end = <span class="keyword">this</span>.length)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>target（必须）：从该位置开始替换数据，负值表示倒数。</li>
+<li>start（可选）：默认是0，从该位置开始读取数据。</li>
+<li>end（可选）：默认等于数组的长度，从该位置前停止读取数据，负值表示倒数。</li>
+</ul>
+<p>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 将3号位复制到0号位</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">3</span>, <span class="number">4</span>)</span><br><span class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// -2相当于3号位，-1相当于4号位</span></span><br><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].copyWithin(<span class="number">0</span>, <span class="number">-2</span>, <span class="number">-1</span>)</span><br><span class="line"><span class="comment">// [4, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数组实例的find()和findIndex()</strong></p>
+<p>find()方法用于找出<strong>第一个</strong>符合条件的数组成员，它的参数是一个回调函数。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">4</span>, <span class="number">-5</span>, <span class="number">10</span>].find(<span class="function">(<span class="params">n</span>) =&gt;</span> n &lt; <span class="number">0</span>)</span><br><span class="line"><span class="comment">// -5</span></span><br></pre></td></tr></table></figure>
+<p>findIndex()方法和find()方法很相似，只不过它是返回符合条件的数组成员的位置。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">15</span>].findIndex(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value &gt; <span class="number">9</span>;</span><br><span class="line">&#125;) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<p>这两个方法都可以接受第二个参数，用来绑定回调函数的<code>this</code>对象。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">v</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> v &gt; <span class="keyword">this</span>.age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> person = &#123;<span class="attr">name</span>: <span class="string">'John'</span>, <span class="attr">age</span>: <span class="number">20</span>&#125;;</span><br><span class="line">[<span class="number">10</span>, <span class="number">12</span>, <span class="number">26</span>, <span class="number">15</span>].find(f, person);    <span class="comment">// 26</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数组实例的fill()</strong></p>
+<p>fill()方法使用给定值来填充数组。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// [7, 7, 7]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">3</span>).fill(<span class="number">7</span>)</span><br><span class="line"><span class="comment">// [7, 7, 7]</span></span><br></pre></td></tr></table></figure>
+<p>它也可以接受第二个以及第三个参数，用于指定填充的起始位置和结束位置。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>].fill(<span class="number">7</span>, <span class="number">1</span>, <span class="number">2</span>)</span><br><span class="line"><span class="comment">// ['a', 7, 'c']</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>数组实例的遍历方法</strong></p>
+<p>es6为数组的遍历提供了三个新的方法：<code>entries()</code>,<code>keys()</code>和<code>values()</code>。</p>
+<p>区别：</p>
+<ul>
+<li><p><code>keys()</code>是对键名的遍历</p>
+</li>
+<li><p><code>values()</code>是对键值的遍历</p>
+</li>
+<li><p><code>entries()</code>是对键值对的遍历</p>
+<p>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> index <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0</span></span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> elem <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 'a'</span></span><br><span class="line"><span class="comment">// 'b'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [index, elem] <span class="keyword">of</span> [<span class="string">'a'</span>, <span class="string">'b'</span>].entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(index, elem);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 0 "a"</span></span><br><span class="line"><span class="comment">// 1 "b"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>数组实例的includes()</strong></p>
+<p><code>Array.prototype.includes</code>方法的返回值是一个布尔值，它表示某个数组是否包含了该方法的参数。该方法也可以接受第二个参数，表示搜索的起始位置（默认为0），如果第二个参数为负数且大于数组的长度，则也表示从0开始搜索。这个方法弥补了<code>indexOf()</code>方法对<code>NaN</code>的误判。</p>
 </li>
 <li></li>
 </ul>
