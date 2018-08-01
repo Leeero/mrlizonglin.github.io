@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MrLee">
 <meta property="og:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-31T11:12:19.905Z">
+<meta property="og:updated_time" content="2018-08-01T12:02:58.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6入门">
 <meta name="twitter:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
@@ -634,12 +634,65 @@
 </ul>
 <h4 id="九：Set和Map数据结构"><a href="#九：Set和Map数据结构" class="headerlink" title="九：Set和Map数据结构"></a>九：Set和Map数据结构</h4><ul>
 <li><p><strong>Set</strong></p>
-<p>Set是es6新提供的数据结构，它类似数组，但是它的成员值都是唯一的。Set本身是一个构造函数，用来生成Set数据结构。例：</p>
+<p>Set是es6新提供的数据结构，它<strong>类似</strong>数组，但是它的成员值都是唯一的。Set本身是一个构造函数，用来生成Set数据结构。例：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> s = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"></span><br><span class="line">[<span class="number">2</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>].forEach(<span class="function"><span class="params">x</span> =&gt;</span> s.add(x));</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i <span class="keyword">of</span> s) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2 3 5 4</span></span><br></pre></td></tr></table></figure>
 <p>它可以接受一个数组作为参数，用来初始化。所以我们可以利用这个特性来进行数组去重：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[...new <span class="built_in">Set</span>(array)]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><strong>Set实例的属性和方法</strong></p>
+<ol>
+<li><p>Set结构的实例属性：</p>
+<ul>
+<li><code>Set.prototype.constructor</code>构造函数默认就是<code>Set</code>函数。</li>
+<li><code>Set.prototype.size</code>返回<code>Set</code>实例的成员总数。</li>
+</ul>
+</li>
+<li><p>Set结构的实例方法：</p>
+<ul>
+<li><code>add()</code>：添加一个值，返回Set结构本身</li>
+<li><code>delete()</code>：删除一个值，返回布尔值（是否删除成功）</li>
+<li><code>has()</code>：返回布尔值（该值是否是Set成员）</li>
+<li><code>clear()</code>：清除成员</li>
+</ul>
+</li>
+<li><p><code>Object结构</code>和<code>Set</code>结构判断是否包括某个键的区别：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 对象的写法</span></span><br><span class="line"><span class="keyword">const</span> properties = &#123;</span><br><span class="line">  <span class="string">'width'</span>: <span class="number">1</span>,</span><br><span class="line">  <span class="string">'height'</span>: <span class="number">1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (properties[someName]) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Set的写法</span></span><br><span class="line"><span class="keyword">const</span> properties = <span class="keyword">new</span> <span class="built_in">Set</span>();</span><br><span class="line"></span><br><span class="line">properties.add(<span class="string">'width'</span>);</span><br><span class="line">properties.add(<span class="string">'height'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (properties.has(someName)) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><strong>遍历操作</strong></p>
+<ol>
+<li><p>遍历的方法：</p>
+<ul>
+<li><code>keys()</code>：返回键名。</li>
+<li><code>values()</code>：返回键值。</li>
+<li><code>entries</code>：返回键值对</li>
+<li><code>forEach()</code>：遍历每一个成员。（<code>forEach</code>方法主要用于对Set结构的每一个成员进行操作）</li>
+</ul>
+</li>
+<li><p>应用：</p>
+<p>Set结构可以与扩展运算符（<code>...</code>）结合使用。比如去重：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>, <span class="number">5</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">5</span>];</span><br><span class="line"><span class="keyword">let</span> unique = [...new <span class="built_in">Set</span>(arr)];</span><br><span class="line"><span class="comment">// [3, 5, 2]</span></span><br></pre></td></tr></table></figure>
+<p>也可以很容易的实现并集、交集和差集：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]);</span><br><span class="line"><span class="keyword">let</span> b = <span class="keyword">new</span> <span class="built_in">Set</span>([<span class="number">4</span>, <span class="number">3</span>, <span class="number">2</span>]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 并集</span></span><br><span class="line"><span class="keyword">let</span> union = <span class="keyword">new</span> <span class="built_in">Set</span>([...a, ...b]);</span><br><span class="line"><span class="comment">// Set &#123;1, 2, 3, 4&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 交集</span></span><br><span class="line"><span class="keyword">let</span> intersect = <span class="keyword">new</span> <span class="built_in">Set</span>([...a].filter(<span class="function"><span class="params">x</span> =&gt;</span> b.has(x)));</span><br><span class="line"><span class="comment">// set &#123;2, 3&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 差集</span></span><br><span class="line"><span class="keyword">let</span> difference = <span class="keyword">new</span> <span class="built_in">Set</span>([...a].filter(<span class="function"><span class="params">x</span> =&gt;</span> !b.has(x)));</span><br><span class="line"><span class="comment">// Set &#123;1&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p><strong>WeakSet</strong></p>
+<ol>
+<li><code>WeakSet</code>结构与<code>Set</code>类似，但是前者的成员只能是对象，不能是其他值。</li>
+</ol>
+</li>
+<li><p><strong>Map</strong></p>
+<ol>
+<li><p>JS的对象本质是键值对的集合，但是一般情况下，只能将字符串当做键。</p>
+<p>ES6提供了Map数据结构，它类似于对象，但是它的键不仅仅是字符串，可以是其他任意类型。当然它也是一个构造函数。Map构造函数的参数可以是任意一个双元素的数组的数据结构。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([</span><br><span class="line">  [<span class="string">'foo'</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="string">'bar'</span>, <span class="number">2</span>]</span><br><span class="line">]);</span><br><span class="line"><span class="keyword">const</span> m1 = <span class="keyword">new</span> <span class="built_in">Map</span>(set);</span><br><span class="line">m1.get(<span class="string">'foo'</span>) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> m2 = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'baz'</span>, <span class="number">3</span>]]);</span><br><span class="line"><span class="keyword">const</span> m3 = <span class="keyword">new</span> <span class="built_in">Map</span>(m2);</span><br><span class="line">m3.get(<span class="string">'baz'</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>实际上，Map结构的键是与内存位置绑定的，所以只有对同一个对象进行引用，Map结构才会把它看成是同一个键。</p>
+</li>
+<li><p>属性以及操作方法：</p>
+</li>
+</ol>
 </li>
 </ul>
 
