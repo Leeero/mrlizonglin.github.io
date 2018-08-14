@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MrLee">
 <meta property="og:description" content="iview框架使用过程中遇到的一些坑以及填坑结果   form表单清空： 问题：清空表单时部分form无法清空。 解决：需要在每一个FormItem上添加prop=&amp;quot;&amp;quot;并且它的值必须与data里定义的值相同。  表格里的Icon添加点击事件： 问题：给Icon添加点击事件时使用 1234on: &amp;#123;	click: () =&amp;gt; &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-25T01:25:58.415Z">
+<meta property="og:updated_time" content="2018-08-07T08:15:08.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iview框架">
 <meta name="twitter:description" content="iview框架使用过程中遇到的一些坑以及填坑结果   form表单清空： 问题：清空表单时部分form无法清空。 解决：需要在每一个FormItem上添加prop=&amp;quot;&amp;quot;并且它的值必须与data里定义的值相同。  表格里的Icon添加点击事件： 问题：给Icon添加点击事件时使用 1234on: &amp;#123;	click: () =&amp;gt; &amp;#123;">
@@ -357,6 +357,12 @@
 <p>不生效。</p>
 <p><strong>解决</strong>：Icon的点击事件时一个特殊的事件，需要使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nativeOn: &#123;</span><br><span class="line">  click: () =&gt; &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;,</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>在使用input输入框时限制输入字数</strong></p>
+<p>直接使用<code>maxlength</code>会报错：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Invalid prop: type check failed <span class="keyword">for</span> prop <span class="string">"maxlength"</span>. Expected <span class="built_in">Number</span>, got <span class="built_in">String</span>.</span><br></pre></td></tr></table></figure>
+<p>解决办法：</p>
+<p>将<code>maxlength</code>改为<code>:maxlength</code></p>
 </li>
 </ol>
 

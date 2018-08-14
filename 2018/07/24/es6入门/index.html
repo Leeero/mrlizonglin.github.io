@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MrLee">
 <meta property="og:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-01T12:02:58.140Z">
+<meta property="og:updated_time" content="2018-08-14T06:11:15.565Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6入门">
 <meta name="twitter:description" content="ECMAScript 6.0是JavaScript语言的一个标准，它的目标是为了让JavaScript可以用来编写复杂的大型应用，成为企业级的开发语言。">
@@ -690,11 +690,88 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> set = <span class="keyword">new</span> <span class="built_in">Set</span>([</span><br><span class="line">  [<span class="string">'foo'</span>, <span class="number">1</span>],</span><br><span class="line">  [<span class="string">'bar'</span>, <span class="number">2</span>]</span><br><span class="line">]);</span><br><span class="line"><span class="keyword">const</span> m1 = <span class="keyword">new</span> <span class="built_in">Map</span>(set);</span><br><span class="line">m1.get(<span class="string">'foo'</span>) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> m2 = <span class="keyword">new</span> <span class="built_in">Map</span>([[<span class="string">'baz'</span>, <span class="number">3</span>]]);</span><br><span class="line"><span class="keyword">const</span> m3 = <span class="keyword">new</span> <span class="built_in">Map</span>(m2);</span><br><span class="line">m3.get(<span class="string">'baz'</span>) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
 <p>实际上，Map结构的键是与内存位置绑定的，所以只有对同一个对象进行引用，Map结构才会把它看成是同一个键。</p>
 </li>
-<li><p>属性以及操作方法：</p>
+<li><p><strong>属性以及操作方法：</strong></p>
+<ul>
+<li><p><code>size</code>属性</p>
+<p><code>size</code>属性返回Map结构的成员总数。</p>
+</li>
+<li><p><code>set(key,value)</code></p>
+<p><code>set</code>方法设置键名<code>key</code>对应的值为<code>value</code>，然后返回整个结构。（如果这个<code>key</code>已经存在值，那么它将会被更新）</p>
+</li>
+<li><p><code>get(key)</code></p>
+<p><code>get</code>方法读取对应<code>key</code>的值，如果不存在，则返回<code>undefined</code>。</p>
+</li>
+<li><p><code>has(ksy)</code></p>
+<p><code>has</code>方法返回的是一个布尔值，表示某个键是否存在。</p>
+</li>
+<li><p><code>delete(key)</code></p>
+<p><code>delete</code>方法删除某个键，返回布尔值，表示是否成功。</p>
+</li>
+<li><p><code>clear()</code></p>
+<p><code>clear</code>方法清除所有成员。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>遍历方法</strong></p>
+<p>Map结构原生提供了三个遍历器生成函数和一个遍历方法：</p>
+<ul>
+<li><p><code>key()</code>：返回键名的遍历器</p>
+</li>
+<li><p><code>values()</code>：返回键值的遍历器</p>
+</li>
+<li><p><code>entries()</code>：返回所有成员的遍历器</p>
+</li>
+<li><p><code>forEach()</code>：遍历Map的所有成员</p>
+<p>例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map = <span class="keyword">new</span> <span class="built_in">Map</span>([</span><br><span class="line">  [<span class="string">'F'</span>, <span class="string">'no'</span>],</span><br><span class="line">  [<span class="string">'T'</span>,  <span class="string">'yes'</span>],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> key <span class="keyword">of</span> map.keys()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F"</span></span><br><span class="line"><span class="comment">// "T"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> value <span class="keyword">of</span> map.values()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "no"</span></span><br><span class="line"><span class="comment">// "yes"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> item <span class="keyword">of</span> map.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(item[<span class="number">0</span>], item[<span class="number">1</span>]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F" "no"</span></span><br><span class="line"><span class="comment">// "T" "yes"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map.entries()) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F" "no"</span></span><br><span class="line"><span class="comment">// "T" "yes"</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 等同于使用map.entries()</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> [key, value] <span class="keyword">of</span> map) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(key, value);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// "F" "no"</span></span><br><span class="line"><span class="comment">// "T" "yes"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结合数组的<code>map</code>方法和<code>filter</code>方法可以实现Map的遍历和过滤，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> map0 = <span class="keyword">new</span> <span class="built_in">Map</span>()</span><br><span class="line">  .set(<span class="number">1</span>, <span class="string">'a'</span>)</span><br><span class="line">  .set(<span class="number">2</span>, <span class="string">'b'</span>)</span><br><span class="line">  .set(<span class="number">3</span>, <span class="string">'c'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> map1 = <span class="keyword">new</span> <span class="built_in">Map</span>(</span><br><span class="line">  [...map0].filter(<span class="function">(<span class="params">[k, v]</span>) =&gt;</span> k &lt; <span class="number">3</span>)</span><br><span class="line">);</span><br><span class="line"><span class="comment">// 产生 Map 结构 &#123;1 =&gt; 'a', 2 =&gt; 'b'&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> map2 = <span class="keyword">new</span> <span class="built_in">Map</span>(</span><br><span class="line">  [...map0].map(<span class="function">(<span class="params">[k, v]</span>) =&gt;</span> [k * <span class="number">2</span>, <span class="string">'_'</span> + v])</span><br><span class="line">    );</span><br><span class="line"><span class="comment">// 产生 Map 结构 &#123;2 =&gt; '_a', 4 =&gt; '_b', 6 =&gt; '_c'&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><strong>与其他数据结构的互相转化</strong></p>
+<ul>
+<li><p>Map转为对象。如果所有Map结构的键都是字符串，那么可以无损的将其转为对象，如果有非字符串的键名，那么会先将其转换成字符串。</p>
+</li>
+<li><p>JSON转为Map。正常情况下，即所有键名都是字符串，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonToStrMap</span>(<span class="params">jsonStr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> objToStrMap(<span class="built_in">JSON</span>.parse(jsonStr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jsonToStrMap(<span class="string">'&#123;"yes": true, "no": false&#125;'</span>)</span><br><span class="line"><span class="comment">// Map &#123;'yes' =&gt; true, 'no' =&gt; false&#125;</span></span><br></pre></td></tr></table></figure>
+<p>当整个JSON是一个数组的时候，例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">jsonToMap</span>(<span class="params">jsonStr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Map</span>(<span class="built_in">JSON</span>.parse(jsonStr));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jsonToMap(<span class="string">'[[true,7],[&#123;"foo":3&#125;,["abc"]]]'</span>)</span><br><span class="line"><span class="comment">// Map &#123;true =&gt; 7, Object &#123;foo: 3&#125; =&gt; ['abc']&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 </li>
 </ol>
 </li>
 </ul>
+<h4 id="十：-Promise"><a href="#十：-Promise" class="headerlink" title="十： Promise"></a>十： Promise</h4><ol>
+<li><p><strong>含义：</strong></p>
+<p>异步操作。</p>
+</li>
+<li><p><strong>基本用法：</strong></p>
+<p>Promise的对象是一个构造函数，用来生成<code>Promise</code>实例。</p>
+<p><code>Promise</code>构造函数接受一个函数作为参数，该函数的两个参数分别是<code>resolve</code>和<code>reject</code>。<code>Promise</code>实例生成之后可以用<code>then</code>方法分别指定<code>resolve</code>和<code>reject</code>的回调函数。例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, ms, <span class="string">'done'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timeout(<span class="number">100</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>异步加载图片是很常用的一种方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">loadImageAsync</span>(<span class="params">url</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> image = <span class="keyword">new</span> Image();</span><br><span class="line"></span><br><span class="line">    image.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      resolve(image);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    image.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'Could not load image at '</span> + url));</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    image.src = url;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>reslove</code>函数的参数除了可以是正常的值以外，还可以是另一个Promise的实例。</p>
+</li>
+<li><p><strong>Promise.prototype.then()</strong></p>
+<p><code>then</code>方法的第一个参数是<code>resolved</code>状态的回调函数，第二个参数是<code>rejected</code>状态的回调函数。并且返回的是一个新的<code>Promise</code>实例。</p>
+</li>
+<li><p><strong>Promise.prototype.catch()</strong></p>
+<p><code>catch</code>方法一般用在异步操作抛出错误的时候。</p>
+</li>
+<li><p><strong>Promise.prototype.finally()</strong></p>
+<p><code>finally</code>用于指定不管Promise对象最后的状态如何都会执行的操作。<code>finally</code>方法的回调函数，不接受任何参数。</p>
+</li>
+<li><p><strong>Promise.all()</strong></p>
+<p><code>Promise.all</code>可以将多个Promise实例，包装成一个新的Promise实例。<code>Promise</code>包含的实例数组，只有所有数组中的所有实例都变成<code>fulfilled</code>状态，<code>Promise</code>才会变成<code>fulfilled</code>状态；包含的数组中有一个被<code>rejected</code>,那么它也会变成<code>rejected</code>状态。</p>
+</li>
+<li><p><strong>Promise.resolve()</strong></p>
+<p><code>Promise.resolve</code>方法将现有的对象转为<code>Promise</code>对象。</p>
+</li>
+</ol>
 
       
     </div>
@@ -902,7 +979,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一：命令"><span class="nav-number">1.</span> <span class="nav-text">一：命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二：解构"><span class="nav-number">2.</span> <span class="nav-text">二：解构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三：字符串的扩展"><span class="nav-number">3.</span> <span class="nav-text">三：字符串的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四：数值的扩展"><span class="nav-number">4.</span> <span class="nav-text">四：数值的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五：函数的扩展"><span class="nav-number">5.</span> <span class="nav-text">五：函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">5.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rest参数"><span class="nav-number">5.2.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式"><span class="nav-number">5.3.</span> <span class="nav-text">严格模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六：数组的扩展"><span class="nav-number">6.</span> <span class="nav-text">六：数组的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七：对象的扩展"><span class="nav-number">7.</span> <span class="nav-text">七：对象的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八：Symbol"><span class="nav-number">8.</span> <span class="nav-text">八：Symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#九：Set和Map数据结构"><span class="nav-number">9.</span> <span class="nav-text">九：Set和Map数据结构</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一：命令"><span class="nav-number">1.</span> <span class="nav-text">一：命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二：解构"><span class="nav-number">2.</span> <span class="nav-text">二：解构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三：字符串的扩展"><span class="nav-number">3.</span> <span class="nav-text">三：字符串的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四：数值的扩展"><span class="nav-number">4.</span> <span class="nav-text">四：数值的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五：函数的扩展"><span class="nav-number">5.</span> <span class="nav-text">五：函数的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#函数参数的默认值"><span class="nav-number">5.1.</span> <span class="nav-text">函数参数的默认值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rest参数"><span class="nav-number">5.2.</span> <span class="nav-text">rest参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#严格模式"><span class="nav-number">5.3.</span> <span class="nav-text">严格模式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#六：数组的扩展"><span class="nav-number">6.</span> <span class="nav-text">六：数组的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#七：对象的扩展"><span class="nav-number">7.</span> <span class="nav-text">七：对象的扩展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#八：Symbol"><span class="nav-number">8.</span> <span class="nav-text">八：Symbol</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#九：Set和Map数据结构"><span class="nav-number">9.</span> <span class="nav-text">九：Set和Map数据结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#十：-Promise"><span class="nav-number">10.</span> <span class="nav-text">十： Promise</span></a></li></ol></div>
             
 
           </div>
