@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="邮件,HTML," />
+  <meta name="keywords" content="flex," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="在邮件中嵌入HTML是常见的需求，但是由于各大邮箱客户端对HTML支持的不同、并且有限，所以在写这类需求的时候，需要注意一下几点：   邮件使用table+css布局 邮件主要部分在body内部，所以样式一定要写成内嵌的，不能在head标签中写style，也不能外联。 不能用浮动的方式定位。position：absolute;float:left;等都不行，float在qq邮箱客户端中可以识别，">
-<meta name="keywords" content="邮件,HTML">
+<meta name="description" content="目前所写的项目多采用flex布局，由于是移动端项目所以不用担心兼容性问题。但是太久没写过flex布局的项目，所以看看阮老师的教程回顾一下。">
+<meta name="keywords" content="flex">
 <meta property="og:type" content="article">
-<meta property="og:title" content="邮件中嵌入HTML">
-<meta property="og:url" content="http://yoursite.com/2018/07/18/邮件中嵌入HTML/index.html">
+<meta property="og:title" content="flex布局">
+<meta property="og:url" content="http://yoursite.com/2018/08/21/flex布局/index.html">
 <meta property="og:site_name" content="MrLee">
-<meta property="og:description" content="在邮件中嵌入HTML是常见的需求，但是由于各大邮箱客户端对HTML支持的不同、并且有限，所以在写这类需求的时候，需要注意一下几点：   邮件使用table+css布局 邮件主要部分在body内部，所以样式一定要写成内嵌的，不能在head标签中写style，也不能外联。 不能用浮动的方式定位。position：absolute;float:left;等都不行，float在qq邮箱客户端中可以识别，">
+<meta property="og:description" content="目前所写的项目多采用flex布局，由于是移动端项目所以不用担心兼容性问题。但是太久没写过flex布局的项目，所以看看阮老师的教程回顾一下。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-25T01:19:50.808Z">
+<meta property="og:updated_time" content="2018-08-21T03:48:06.194Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="邮件中嵌入HTML">
-<meta name="twitter:description" content="在邮件中嵌入HTML是常见的需求，但是由于各大邮箱客户端对HTML支持的不同、并且有限，所以在写这类需求的时候，需要注意一下几点：   邮件使用table+css布局 邮件主要部分在body内部，所以样式一定要写成内嵌的，不能在head标签中写style，也不能外联。 不能用浮动的方式定位。position：absolute;float:left;等都不行，float在qq邮箱客户端中可以识别，">
+<meta name="twitter:title" content="flex布局">
+<meta name="twitter:description" content="目前所写的项目多采用flex布局，由于是移动端项目所以不用担心兼容性问题。但是太久没写过flex布局的项目，所以看看阮老师的教程回顾一下。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/18/邮件中嵌入HTML/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/08/21/flex布局/"/>
 
 
 
 
 
-  <title>邮件中嵌入HTML | MrLee</title>
+  <title>flex布局 | MrLee</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/18/邮件中嵌入HTML/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/21/flex布局/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Zonglin">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">邮件中嵌入HTML</h1>
+          <h1 class="post-title" itemprop="name headline">flex布局</h1>
         
 
         <div class="post-meta">
@@ -283,8 +283,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-18T09:31:46+08:00">
-                2018-07-18
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-08-21T11:29:49+08:00">
+                2018-08-21
               </time>
             
 
@@ -306,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术总结/" itemprop="url" rel="index">
-                    <span itemprop="name">技术总结</span>
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
                   </a>
                 </span>
 
@@ -344,20 +344,139 @@
 
       
         <blockquote>
-<p>在邮件中嵌入HTML是常见的需求，但是由于各大邮箱客户端对HTML支持的不同、并且有限，所以在写这类需求的时候，需要注意一下几点：</p>
+<p>目前所写的项目多采用flex布局，由于是移动端项目所以不用担心兼容性问题。但是太久没写过flex布局的项目，所以看看阮老师的教程回顾一下。</p>
 </blockquote>
-<ol>
-<li>邮件使用table+css布局</li>
-<li>邮件主要部分在body内部，所以样式一定要写成内嵌的，不能在head标签中写style，也不能外联。</li>
-<li>不能用浮动的方式定位。position：absolute;float:left;等都不行，float在qq邮箱客户端中可以识别，但是在outlook中无法识别。</li>
-<li>表格的border，使用table上的border属性，可以在qq浏览器中兼容，但是在outlook中打开是没有边框的，这种情况，只能给每一个td加一个border，在table中使用border-collapse:collapse;来合并重复的边框。</li>
-<li>为了保证兼容性，需要把邮件的宽度设置为600px，最大600px；</li>
-<li>少用img，因为很多邮箱客户端默认不显示图片，所以，如果需要图片的话，一定要写好alt和title；</li>
-<li>背景图片，尽量用background-color使用纯色背景，如果一定要用背景图片，使用background属性，</li>
-<li>邮件不支持javascript，flash以及一些特殊的标签</li>
-</ol>
-<p>参考：<a href="http://www.cnblogs.com/zhangwenjiajessy/p/6132201.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhangwenjiajessy/p/6132201.html</a></p>
-
+<a id="more"></a>
+<h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><h5 id="flex布局其实就是弹性布局，多用在有自适应的需求的项目里。任何一个容器都可以通过display-flex来进行flex布局，包括行内元素，采用flex布局后，容器内部的子元素称之为项目。"><a href="#flex布局其实就是弹性布局，多用在有自适应的需求的项目里。任何一个容器都可以通过display-flex来进行flex布局，包括行内元素，采用flex布局后，容器内部的子元素称之为项目。" class="headerlink" title="flex布局其实就是弹性布局，多用在有自适应的需求的项目里。任何一个容器都可以通过display:flex来进行flex布局，包括行内元素，采用flex布局后，容器内部的子元素称之为项目。"></a>flex布局其实就是弹性布局，多用在有自适应的需求的项目里。任何一个容器都可以通过<code>display:flex</code>来进行flex布局，包括行内元素，采用flex布局后，容器内部的子元素称之为项目。</h5><p><em>在使用flex布局之后，子元素的float、clear、vertical-align这些属性都会失效</em></p>
+<h4 id="容器属性"><a href="#容器属性" class="headerlink" title="容器属性"></a>容器属性</h4><h5 id="设置成flex布局的容器具备以下6个属性："><a href="#设置成flex布局的容器具备以下6个属性：" class="headerlink" title="设置成flex布局的容器具备以下6个属性："></a>设置成flex布局的容器具备以下6个属性：</h5><p>1.<strong> flex-direction</strong>决定了项目的排列方向，共有四个值：</p>
+<table>
+<thead>
+<tr>
+<th>row（默认值）</th>
+<th>子元素水平排列，起点在左端</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>row-reverse</td>
+<td>子元素水平排列，起点在右端</td>
+</tr>
+<tr>
+<td>column</td>
+<td>子元素垂直排列，起点在上端</td>
+</tr>
+<tr>
+<td>column-severse</td>
+<td>子元素垂直排列，起点在下端</td>
+</tr>
+</tbody>
+</table>
+<p>2.<strong>flex-wrap</strong>属性决定了，如果一条线排列不下，即需要换行时，子元素的排列方式。</p>
+<table>
+<thead>
+<tr>
+<th>nowrap</th>
+<th>不换行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>wrap</td>
+<td>换行，第一行在上</td>
+</tr>
+<tr>
+<td>wrap-severse</td>
+<td>换行，第一行在下</td>
+</tr>
+</tbody>
+</table>
+<p>3.<strong>flex-flow</strong> 其实这个属性就是1、2属性的缩写，默认值是<code>row nowrap</code></p>
+<p>4.<strong>justify-content</strong>定义了子元素在主轴上的对齐方式:</p>
+<table>
+<thead>
+<tr>
+<th>flex-start</th>
+<th>左对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-end</td>
+<td>右对齐</td>
+</tr>
+<tr>
+<td>center</td>
+<td>居中</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>两端对齐，项目之间的间隔都相等</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>每个项目两侧的间隔相等</td>
+</tr>
+</tbody>
+</table>
+<p>5.<strong>align-items</strong>定义子元素在交叉轴上如何对齐</p>
+<table>
+<thead>
+<tr>
+<th>flex-start</th>
+<th>交叉轴的起点对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-end</td>
+<td>交叉轴的终点对齐</td>
+</tr>
+<tr>
+<td>center</td>
+<td>交叉轴的中点对齐</td>
+</tr>
+<tr>
+<td>baseline</td>
+<td>项目的第一行文字的基线对齐</td>
+</tr>
+<tr>
+<td>stretch（默认值）</td>
+<td>如果项目未设置高度或设为auto，将占满整个容器的高度</td>
+</tr>
+</tbody>
+</table>
+<p>6.<strong>align-content</strong>定义了多根轴线的对齐方式。如果子元素只有一根轴线，该属性不起作用</p>
+<table>
+<thead>
+<tr>
+<th>flex-start</th>
+<th>交叉轴的起点对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>flex-end</td>
+<td>交叉轴的终点对齐</td>
+</tr>
+<tr>
+<td>center</td>
+<td>交叉轴的中点对齐</td>
+</tr>
+<tr>
+<td>space-between</td>
+<td>与交叉轴两端对齐，轴线之间的间隔平均分布</td>
+</tr>
+<tr>
+<td>space-around</td>
+<td>每根轴线两侧的间隔都相等</td>
+</tr>
+<tr>
+<td>stretch（默认值）</td>
+<td>占满整个交叉轴</td>
+</tr>
+</tbody>
+</table>
+<h4 id="项目（子元素）属性"><a href="#项目（子元素）属性" class="headerlink" title="项目（子元素）属性"></a>项目（子元素）属性</h4><h5 id="同样，子元素也有6个属性，各属性的值分别如下："><a href="#同样，子元素也有6个属性，各属性的值分别如下：" class="headerlink" title="同样，子元素也有6个属性，各属性的值分别如下："></a>同样，子元素也有6个属性，各属性的值分别如下：</h5>
       
     </div>
     
@@ -382,9 +501,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/邮件/" rel="tag"><i class="fa fa-tag"></i>邮件</a>
-          
-            <a href="/tags/HTML/" rel="tag"><i class="fa fa-tag"></i>HTML</a>
+            <a href="/tags/flex/" rel="tag"><i class="fa fa-tag"></i>flex</a>
           
         </div>
       
@@ -397,8 +514,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/17/iview使用填坑/" rel="next" title="iview框架">
-                <i class="fa fa-chevron-left"></i> iview框架
+              <a href="/2018/07/30/前端面试总结-基础篇/" rel="next" title="前端面试">
+                <i class="fa fa-chevron-left"></i> 前端面试
               </a>
             
           </div>
@@ -407,8 +524,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/20/TypeScript与vue/" rel="prev" title="vue与TypeScript的那些事">
-                vue与TypeScript的那些事 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/08/21/前端面试总结-干货篇/" rel="prev" title="前端面试">
+                前端面试 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -466,8 +583,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -547,6 +673,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本概念"><span class="nav-number">1.</span> <span class="nav-text">基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#flex布局其实就是弹性布局，多用在有自适应的需求的项目里。任何一个容器都可以通过display-flex来进行flex布局，包括行内元素，采用flex布局后，容器内部的子元素称之为项目。"><span class="nav-number">1.1.</span> <span class="nav-text">flex布局其实就是弹性布局，多用在有自适应的需求的项目里。任何一个容器都可以通过display:flex来进行flex布局，包括行内元素，采用flex布局后，容器内部的子元素称之为项目。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器属性"><span class="nav-number">2.</span> <span class="nav-text">容器属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#设置成flex布局的容器具备以下6个属性："><span class="nav-number">2.1.</span> <span class="nav-text">设置成flex布局的容器具备以下6个属性：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#项目（子元素）属性"><span class="nav-number">3.</span> <span class="nav-text">项目（子元素）属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#同样，子元素也有6个属性，各属性的值分别如下："><span class="nav-number">3.1.</span> <span class="nav-text">同样，子元素也有6个属性，各属性的值分别如下：</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
