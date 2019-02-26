@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="使用纯CSS来解决图片或者盒子的等比缩放问题  在刚刚临时接到了一个Demo开发需求，其中有个点是需要在当前页面展示三个图片，图片的间距一样，大小一样，并且图片的大小不能固定写死，需要按照当前屏幕的变化而等比缩放（即图片的宽高比例不能变化）。当我准备拿出JS大法来解决时，又被产品催着要Demo，就想着看看有没有其他简单的方法来实现呢，结果当然是有的： 1234567891011121314151">
+<meta name="description" content="使用纯CSS来解决图片或者盒子的等比缩放问题">
 <meta name="keywords" content="图片,缩放">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CSS解决多个图片等比缩放">
 <meta property="og:url" content="http://yoursite.com/2019/02/26/CSS解决多个图片等比缩放/index.html">
 <meta property="og:site_name" content="MrLee">
-<meta property="og:description" content="使用纯CSS来解决图片或者盒子的等比缩放问题  在刚刚临时接到了一个Demo开发需求，其中有个点是需要在当前页面展示三个图片，图片的间距一样，大小一样，并且图片的大小不能固定写死，需要按照当前屏幕的变化而等比缩放（即图片的宽高比例不能变化）。当我准备拿出JS大法来解决时，又被产品催着要Demo，就想着看看有没有其他简单的方法来实现呢，结果当然是有的： 1234567891011121314151">
+<meta property="og:description" content="使用纯CSS来解决图片或者盒子的等比缩放问题">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-26T12:36:52.921Z">
+<meta property="og:updated_time" content="2019-02-26T12:39:41.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CSS解决多个图片等比缩放">
-<meta name="twitter:description" content="使用纯CSS来解决图片或者盒子的等比缩放问题  在刚刚临时接到了一个Demo开发需求，其中有个点是需要在当前页面展示三个图片，图片的间距一样，大小一样，并且图片的大小不能固定写死，需要按照当前屏幕的变化而等比缩放（即图片的宽高比例不能变化）。当我准备拿出JS大法来解决时，又被产品催着要Demo，就想着看看有没有其他简单的方法来实现呢，结果当然是有的： 1234567891011121314151">
+<meta name="twitter:description" content="使用纯CSS来解决图片或者盒子的等比缩放问题">
 
 
 
@@ -346,7 +346,8 @@
         <blockquote>
 <p>使用纯CSS来解决图片或者盒子的等比缩放问题</p>
 </blockquote>
-<p>在刚刚临时接到了一个Demo开发需求，其中有个点是需要在当前页面展示三个图片，图片的间距一样，大小一样，并且图片的大小不能固定写死，需要按照当前屏幕的变化而等比缩放（即图片的宽高比例不能变化）。当我准备拿出JS大法来解决时，又被产品催着要Demo，就想着看看有没有其他简单的方法来实现呢，结果当然是有的：</p>
+<a id="more"></a>
+<p>​    在刚刚临时接到了一个Demo开发需求，其中有个点是需要在当前页面展示三个图片，图片的间距一样，大小一样，并且图片的大小不能固定写死，需要按照当前屏幕的变化而等比缩放（即图片的宽高比例不能变化）。当我准备拿出JS大法来解决时，又被产品催着要Demo，就想着看看有没有其他简单的方法来实现呢，结果当然是有的：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">  	&lt;img src=&quot;&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">  	&lt;img src=&quot;&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;item&quot;&gt;</span><br><span class="line">  	&lt;img src=&quot;&quot;&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&apos;scss&apos; scoped&gt;</span><br><span class="line">.item &#123;</span><br><span class="line">  float: left;</span><br><span class="line">  width: 30%;</span><br><span class="line">  margin: 10px 2%;</span><br><span class="line">  height: 0;</span><br><span class="line">  padding-bottom: 12%;</span><br><span class="line">  background-color: #dbe0e4;</span><br><span class="line">  img &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
 <p>原理：</p>
 <p><code>padding-bottom</code> 有一个很好用的特性是：当它的值是百分比形式时，百分比的基数是其所在元素的父元素的宽度而不是高度（同 <code>padding-left</code> 和 <code>padding-right</code> 一样）。所以：</p>
