@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="vue,多环境," />
+  <meta name="keywords" content="vue,iView," />
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Vue-Cli 3.0脚手架一般默认带有三个模式，但是在实际的开发中，我们可能会遇到不至于三个模式的情况，例如：演示环境，预发布环境等等，并且有可能多个环境之间还存在值差异，这个时候就需要我们自定义环境（模式），并且根据当前的环境以及模式动态加载路由或者模块">
-<meta name="keywords" content="vue,多环境">
+<meta name="description" content="一直想总结一下最近在负责的基于Vue开发的金易联管理后台的开发历程，但是因为各种原因迟迟没有动笔，这几天终于下定决心开工，总结一下以往遇到的坑以及一些个人觉得可以称之为工作经验的东西。文笔太差，就以流水账的方式记录吧。">
+<meta name="keywords" content="vue,iView">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue项目多版本开发">
-<meta property="og:url" content="http://yoursite.com/2018/11/26/vue项目多版本开发部署/index.html">
+<meta property="og:title" content="金易联管理后台开发总结『一』">
+<meta property="og:url" content="http://yoursite.com/2018/11/26/金易联管理后台开发总结『一』/index.html">
 <meta property="og:site_name" content="MrLee">
-<meta property="og:description" content="Vue-Cli 3.0脚手架一般默认带有三个模式，但是在实际的开发中，我们可能会遇到不至于三个模式的情况，例如：演示环境，预发布环境等等，并且有可能多个环境之间还存在值差异，这个时候就需要我们自定义环境（模式），并且根据当前的环境以及模式动态加载路由或者模块">
+<meta property="og:description" content="一直想总结一下最近在负责的基于Vue开发的金易联管理后台的开发历程，但是因为各种原因迟迟没有动笔，这几天终于下定决心开工，总结一下以往遇到的坑以及一些个人觉得可以称之为工作经验的东西。文笔太差，就以流水账的方式记录吧。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-26T09:33:13.000Z">
+<meta property="og:updated_time" content="2019-03-14T10:12:58.102Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue项目多版本开发">
-<meta name="twitter:description" content="Vue-Cli 3.0脚手架一般默认带有三个模式，但是在实际的开发中，我们可能会遇到不至于三个模式的情况，例如：演示环境，预发布环境等等，并且有可能多个环境之间还存在值差异，这个时候就需要我们自定义环境（模式），并且根据当前的环境以及模式动态加载路由或者模块">
+<meta name="twitter:title" content="金易联管理后台开发总结『一』">
+<meta name="twitter:description" content="一直想总结一下最近在负责的基于Vue开发的金易联管理后台的开发历程，但是因为各种原因迟迟没有动笔，这几天终于下定决心开工，总结一下以往遇到的坑以及一些个人觉得可以称之为工作经验的东西。文笔太差，就以流水账的方式记录吧。">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/26/vue项目多版本开发部署/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/11/26/金易联管理后台开发总结『一』/"/>
 
 
 
 
 
-  <title>vue项目多版本开发 | MrLee</title>
+  <title>金易联管理后台开发总结『一』 | MrLee</title>
   
 
 
@@ -254,7 +254,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/vue项目多版本开发部署/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/金易联管理后台开发总结『一』/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Li Zonglin">
@@ -271,7 +271,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vue项目多版本开发</h1>
+          <h1 class="post-title" itemprop="name headline">金易联管理后台开发总结『一』</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/vue/" itemprop="url" rel="index">
-                    <span itemprop="name">vue</span>
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
                   </a>
                 </span>
 
@@ -344,36 +344,20 @@
 
       
         <blockquote>
-<p>Vue-Cli 3.0脚手架一般默认带有三个模式，但是在实际的开发中，我们可能会遇到不至于三个模式的情况，例如：演示环境，预发布环境等等，并且有可能多个环境之间还存在值差异，这个时候就需要我们自定义环境（模式），并且根据当前的环境以及模式动态加载路由或者模块</p>
+<p>一直想总结一下最近在负责的基于Vue开发的金易联管理后台的开发历程，但是因为各种原因迟迟没有动笔，这几天终于下定决心开工，总结一下以往遇到的坑以及一些个人觉得可以称之为工作经验的东西。文笔太差，就以流水账的方式记录吧。</p>
 </blockquote>
 <a id="more"></a>
-<ul>
-<li><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>某一个项目需要交付给多家公司，并且在这个项目中，每家公司都可能会有个性化的定制，有的可能差异很大，有的甚至可能只是一个小小的功能模块不同，这个时候如果依靠拉代码分支来维护，这样一定会导致后期维护困难，并且会造成代码混乱难以区分等问题。</p>
-</li>
-<li><h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>cli3.0默认有三个模式：</p>
-<ul>
-<li><code>development</code> 模式用于 <code>vue-cli-service serve</code></li>
-<li><code>production</code> 模式用于 <code>vue-cli-service build</code> 和 <code>vue-cli-service test:e2e</code></li>
-<li><code>test</code> 模式用于 <code>vue-cli-service test:unit</code></li>
-</ul>
-<p>注意：模式是不同于<code>NODE_ENV</code>的。</p>
-<ol>
-<li><p>首先根据你的需求在项目的根目录新建一个.env.XXXX的文件，并且在文件中写入环境变量。例：</p>
-<p>新建：.env.independent 文件，并在文件中配置如下：</p>
-<p><code>NODE_ENV=independent
-VUE_APP_VE = &#39;independent&#39;</code></p>
-<p>PS： 只有以 <code>VUE_APP_</code> 开头的变量才能在项目代码中被访问到。</p>
-</li>
-<li><p>然后修改package.json文件：</p>
-<p>新增快捷命令： </p>
-<p><code>&quot;build:independent&quot;: &quot;vue-cli-service build --mode independent&quot;,</code></p>
-<p><code>&quot;serve:independent&quot;: &quot;vue-cli-service serve --mode independent&quot;</code></p>
-</li>
-<li><p>执行<code>yarn build:independent</code>打包项目，然后将其放在本地nginx上运行（或者选择你自己的方式本地运行），这个时候你会发现已经可以拿到自定义的VUE_APP_VE变量了。这就意味着，你可以在代码中根据这个变量来动态加载路由或者功能模块。</p>
-</li>
-</ol>
-</li>
-</ul>
+<h4 id="什么是金易联？"><a href="#什么是金易联？" class="headerlink" title="什么是金易联？"></a>什么是金易联？</h4><p>金易联是我们公司【<a href="https://www.finogeeks.com/" target="_blank" rel="noopener">Finogeeks</a>】为银行证券等行业提供的一套业务解决方案。构建一个金融机构社交化销售服务平台，可以通过它支持金融机构实现线上线下一体化，建立自己的“社交化服务网络”，实现与客户数字化连接。</p>
+<p>目前已经在中国工商银行、深证通、广发小贷、长城证券、华泰证券等多加企业落地。</p>
+<p>金易联管理后台是这个解决方案的管理端，目前已经包含工单管理、积分管理、合规管理、基础管理等模块，这样说好像不怎么复杂，但是实际上在这个管理后台可以进行工单规则配置、积分规则配置、积分结算、合规监控、人员配置等超过30项个性化配置，所以单从这方面来看，这个项目已经可以称得上是个大项目了。好了，牛逼吹完了，接下来说正事。</p>
+<h4 id="技术方案"><a href="#技术方案" class="headerlink" title="技术方案"></a>技术方案</h4><p>框架：Vue</p>
+<p>UI组件库：iView</p>
+<p>打包工具：webpack</p>
+<p>脚手架：Vue-cli 3.0</p>
+<p>协同工具：git</p>
+<p>自动化工具：Drone</p>
+<p>容器：Docker</p>
+<p>总结一下就是：基于Vue.js配合iViewUI库开发项目，然后将代码推动到git仓库后，Gogs通过webhook通知Drone触发构建然后所有的构建流程可以运行在Docker镜像环境下，根据项目中的Dockerfile将前面的构建产物打包成镜像，并推送到私有Docker仓库，最后通过Rancher拉起服务。</p>
 
       
     </div>
@@ -401,7 +385,7 @@ VUE_APP_VE = &#39;independent&#39;</code></p>
           
             <a href="/tags/vue/" rel="tag"><i class="fa fa-tag"></i>vue</a>
           
-            <a href="/tags/多环境/" rel="tag"><i class="fa fa-tag"></i>多环境</a>
+            <a href="/tags/iView/" rel="tag"><i class="fa fa-tag"></i>iView</a>
           
         </div>
       
@@ -583,7 +567,7 @@ VUE_APP_VE = &#39;independent&#39;</code></p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是金易联？"><span class="nav-number">1.</span> <span class="nav-text">什么是金易联？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#技术方案"><span class="nav-number">2.</span> <span class="nav-text">技术方案</span></a></li></ol></div>
             
 
           </div>
