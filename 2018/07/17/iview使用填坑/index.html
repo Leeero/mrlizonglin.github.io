@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="MrLee">
 <meta property="og:description" content="iview框架使用过程中遇到的一些坑以及填坑结果   form表单清空： 问题：清空表单时部分form无法清空。 解决：需要在每一个FormItem上添加prop=&amp;quot;&amp;quot;并且它的值必须与data里定义的值相同。  表格里的Icon添加点击事件： 问题：给Icon添加点击事件时使用 1234on: &amp;#123;	click: () =&amp;gt; &amp;#123;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-08-07T08:15:08.000Z">
+<meta property="og:updated_time" content="2019-03-22T02:44:58.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iview框架">
 <meta name="twitter:description" content="iview框架使用过程中遇到的一些坑以及填坑结果   form表单清空： 问题：清空表单时部分form无法清空。 解决：需要在每一个FormItem上添加prop=&amp;quot;&amp;quot;并且它的值必须与data里定义的值相同。  表格里的Icon添加点击事件： 问题：给Icon添加点击事件时使用 1234on: &amp;#123;	click: () =&amp;gt; &amp;#123;">
@@ -364,6 +364,11 @@
 <p>解决办法：</p>
 <p>将<code>maxlength</code>改为<code>:maxlength</code></p>
 </li>
+<li><p><strong>Tooltip换行及渲染</strong></p>
+<p>关于iview上的文字提示及气泡提示都是没有换行的，如果要换行必须自己设置，但是直接在Tooltip上设置它的style为whit-spce=‘normal’是不能生效的，</p>
+<p>经测试：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"white-space: normal;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -494,7 +499,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">21</span>
                   <span class="site-state-item-name">博文</span>
                 </a>
               </div>
@@ -516,7 +521,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
