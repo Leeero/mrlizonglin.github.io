@@ -88,7 +88,7 @@
 <meta property="og:description" content="本规范提供了一种统一的编码风格规范来编写前端代码。这使得代码具有如下的特性：  其它开发者或是团队成员更容易阅读和理解。 IDEs 更容易理解代码，从而提供高亮、格式化等辅助功能。 更容易使用现有的工具。 更容易实现缓存以及代码包的分拆。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://image.lizonglin.cn/20190610153847.png">
-<meta property="og:updated_time" content="2019-06-13T09:24:53.093Z">
+<meta property="og:updated_time" content="2019-06-13T09:28:48.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="代码风格规范">
 <meta name="twitter:description" content="本规范提供了一种统一的编码风格规范来编写前端代码。这使得代码具有如下的特性：  其它开发者或是团队成员更容易阅读和理解。 IDEs 更容易理解代码，从而提供高亮、格式化等辅助功能。 更容易使用现有的工具。 更容易实现缓存以及代码包的分拆。">
@@ -386,7 +386,6 @@
 </ul>
 </blockquote>
 <a id="more"></a>
-<p>[TOC]</p>
 <h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><h3 id="项目目录结构"><a href="#项目目录结构" class="headerlink" title="项目目录结构"></a>项目目录结构</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">├── build                      <span class="comment">// 构建相关  </span></span><br><span class="line">├── config                     <span class="comment">// 配置相关</span></span><br><span class="line">├── src                        <span class="comment">// 源代码</span></span><br><span class="line">│   ├── api                    <span class="comment">// 所有请求 (结构和views对应，全局公用的模块单独存放)</span></span><br><span class="line">│   ├── assets                 <span class="comment">// 图片、字体等静态资源</span></span><br><span class="line">│   ├── common		             <span class="comment">// 公共资源</span></span><br><span class="line">│   │   ├── constant		       <span class="comment">// 存放常量文件</span></span><br><span class="line">│   │   ├── network		      	 <span class="comment">// 网络模块</span></span><br><span class="line">│   ├── utils                  <span class="comment">// 全局公用方法、工具</span></span><br><span class="line">│   ├── components             <span class="comment">// 全局公用组件</span></span><br><span class="line">│   ├── router                 <span class="comment">// 路由</span></span><br><span class="line">│   ├── store                  <span class="comment">// 全局 store管理</span></span><br><span class="line">│   ├── styles                 <span class="comment">// 全局样式</span></span><br><span class="line">│   ├── views                  <span class="comment">// 根据业务模块来划分 views，并且 将views 和 api 两个模块一一对应</span></span><br><span class="line">│   |   ├── xxxxx         		 <span class="comment">// 业务模块1 </span></span><br><span class="line">│   |   |   ├── components     <span class="comment">// 业务模块1的组件目录</span></span><br><span class="line">│   |   |   ├── xxxx.vue       <span class="comment">// 业务模块1的页面文件 (这里遵循主页面文件名和文件夹名一致的原则)</span></span><br><span class="line">│   ├── App.vue                <span class="comment">// 入口页面</span></span><br><span class="line">│   ├── main.js                <span class="comment">// 入口 加载组件 初始化等</span></span><br><span class="line">├── <span class="keyword">static</span>                     <span class="comment">// 第三方不打包资源</span></span><br><span class="line">├── .babelrc                   <span class="comment">// babel 的配置文件</span></span><br><span class="line">├── .drone.yml                 <span class="comment">// drone 自动化构建配置文件</span></span><br><span class="line">├── .editorconfig              <span class="comment">// 编辑器的配置文件；可配置如缩进、空格、制表类似的参数；</span></span><br><span class="line">├── .eslintrc.js               <span class="comment">// eslint 的配置文件</span></span><br><span class="line">├── .eslintignore              <span class="comment">// eslint 的忽略规则</span></span><br><span class="line">├── .gitignore                 <span class="comment">// git的忽略配置文件</span></span><br><span class="line">├── .postcssrc.js              <span class="comment">// postcss 的配置文件</span></span><br><span class="line">├── Dockerfile                 <span class="comment">// Docker配置文件</span></span><br><span class="line">├── index.html                 <span class="comment">// HTML模板</span></span><br><span class="line">├── package.json               <span class="comment">// npm包配置文件，里面定义了项目的npm脚本，依赖包等信息</span></span><br><span class="line">└── README.md</span><br></pre></td></tr></table></figure>
 <h3 id="vue-文件结构"><a href="#vue-文件结构" class="headerlink" title="vue 文件结构"></a>vue 文件结构</h3><p>合理的组件结构可以使得组件更加的容易理解，所以我推荐以下的文件结构：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;page&quot;&gt;</span><br><span class="line">    &lt;!-- ... --&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    // 不要忘记了 name 属性</span><br><span class="line">    name: &apos;RangeSlider&apos;,</span><br><span class="line">    // 使用组件 mixins 共享通用功能</span><br><span class="line">    mixins: [],</span><br><span class="line">    // 组成新的组件</span><br><span class="line">    extends: &#123;&#125;,</span><br><span class="line">    // 组件属性、变量</span><br><span class="line">    props: &#123;</span><br><span class="line">      bar: &#123;&#125;, // 按字母顺序</span><br><span class="line">      foo: &#123;&#125;,</span><br><span class="line">      fooBar: &#123;&#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    // 变量</span><br><span class="line">    data() &#123;&#125;,</span><br><span class="line">    computed: &#123;&#125;,</span><br><span class="line">    // 使用其它组件</span><br><span class="line">    components: &#123;&#125;,</span><br><span class="line">    // 方法</span><br><span class="line">    watch: &#123;&#125;,</span><br><span class="line">    methods: &#123;&#125;,</span><br><span class="line">    // 生命周期函数</span><br><span class="line">    beforeCreate() &#123;&#125;,</span><br><span class="line">    mounted() &#123;&#125;,</span><br><span class="line">  &#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&apos;scss&apos; scoped&gt;</span><br><span class="line">  .page &#123; /* ... */ &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
@@ -506,18 +505,104 @@
 </ol>
 <p>多方糅合整理一下，可以得到我们需要的 css 命名规范：</p>
 <ol>
-<li><p>使用命名空间（暂定只有以下几种情况，以后视情况新增）：</p>
-<p>| 语义 | 命名    | 缩写 |<br>| —- | ——- | —- |<br>| 布局 | layout  | .l-  |<br>| 模块 | module  | .m-  |<br>| 元素 | element | .e-  |<br>| 状态 | status  | .s-  |<br>| 主题 | theme   | .t-  |</p>
-</li>
+<li>使用命名空间（暂定只有以下几种情况，以后视情况新增）：</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>语义</th>
+<th>命名</th>
+<th>缩写</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>布局</td>
+<td>layout</td>
+<td>.l-</td>
+</tr>
+<tr>
+<td>模块</td>
+<td>module</td>
+<td>.m-</td>
+</tr>
+<tr>
+<td>元素</td>
+<td>element</td>
+<td>.e-</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>status</td>
+<td>.s-</td>
+</tr>
+<tr>
+<td>主题</td>
+<td>theme</td>
+<td>.t-</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
 <li><p>格式上采用 BEM 思想</p>
 <p>在分类单词后跟Block的名称，例如：</p>
-<p>| 语义 | 命名  |<br>| —- | —– |<br>| 头部 | head  |<br>| 主体 | body  |<br>| 导航 | nav   |<br>| 菜单 | menu  |<br>| 表格 | table |</p>
-<p>在 Block 后面使用”_”连接对应的业务元素，例如：</p>
-<p>| 语义 | 命名 |<br>| —- | —- |<br>| 文字 | text |<br>| 姓名 | name |<br>| 年龄 | age  |</p>
-<p>实际开发的例子：</p>
-<p><img src="http://image.lizonglin.cn/20190610153847.png" alt=""></p>
 </li>
 </ol>
+<table>
+<thead>
+<tr>
+<th>语义</th>
+<th>命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>头部</td>
+<td>head</td>
+</tr>
+<tr>
+<td>主体</td>
+<td>body</td>
+</tr>
+<tr>
+<td>导航</td>
+<td>nav</td>
+</tr>
+<tr>
+<td>菜单</td>
+<td>menu</td>
+</tr>
+<tr>
+<td>表格</td>
+<td>table</td>
+</tr>
+</tbody>
+</table>
+<p>   在 Block 后面使用”_”连接对应的业务元素，例如：</p>
+<table>
+<thead>
+<tr>
+<th>语义</th>
+<th>命名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文字</td>
+<td>text</td>
+</tr>
+<tr>
+<td>姓名</td>
+<td>name</td>
+</tr>
+<tr>
+<td>年龄</td>
+<td>age</td>
+</tr>
+</tbody>
+</table>
+<p>   实际开发的例子：</p>
+<p>   <img src="http://image.lizonglin.cn/20190610153847.png" alt=""></p>
 <p>PS：</p>
 <ol>
 <li><p>在有重复样式时，要注意命名的通用性，因为这时的 class 命名可以重复使用，如果遇到较小差异的时候，请给存在差异的 class 再添加一个差异化的命名，并为其单独的设定样式。</p>
