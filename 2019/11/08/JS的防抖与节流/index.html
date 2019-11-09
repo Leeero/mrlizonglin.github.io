@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="Lero">
 <meta property="og:description" content="在平时的业务开发中，经常会有输入框搜索，或者按钮点击请求等业务场景，此时如果该事件处理函数调用的频率不加限制的话，会加重后端服务的压力，进而导致用户的体验变得很差，所以在此业务场景下，我们可以对该函数进行防抖或者节流来减少调用频率。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-08T03:41:11.800Z">
+<meta property="og:updated_time" content="2019-11-09T07:18:14.605Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS的防抖与节流">
 <meta name="twitter:description" content="在平时的业务开发中，经常会有输入框搜索，或者按钮点击请求等业务场景，此时如果该事件处理函数调用的频率不加限制的话，会加重后端服务的压力，进而导致用户的体验变得很差，所以在此业务场景下，我们可以对该函数进行防抖或者节流来减少调用频率。">
@@ -337,7 +337,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  642
+                  684
                 </span>
               
 
@@ -380,10 +380,21 @@
 </blockquote>
 <a id="more"></a>
 <ol>
-<li><h4 id="函数防抖（debounce）"><a href="#函数防抖（debounce）" class="headerlink" title="函数防抖（debounce）"></a>函数防抖（debounce）</h4><p>含义：防抖，指的就是在触发事件后的n秒内，该函数只会被执行一次，如果在接下来的n秒内，该函数又被触发了，那么就会再次计算函数的执行时间。简单点讲：你定义了2秒内该函数只会被执行一次，那么就从你触发的第一次开始计时2秒，如果这2s内，你再次触发了这个函数，那么就需要重新计时2s，只到在此次的2s内你不会再次触发该函数，它才会真正的去执行函数内的方法。</p>
+<li><h4 id="函数防抖（debounce）"><a href="#函数防抖（debounce）" class="headerlink" title="函数防抖（debounce）"></a>函数防抖（debounce）</h4><p>含义：</p>
+<p>​        防抖，指的就是在触发事件后的n秒内，该函数只会被执行一次，如果在接下来的n秒内，该函数又被触发了，那么就会再次计算函数的执行时间。简单点讲：你定义了2秒内该函数只会被执行一次，那么就从你触发的第一次开始计时2秒，如果这2s内，你再次触发了这个函数，那么就需要重新计时2s，只到在此次的2s内你不会再次触发该函数，它才会真正的去执行函数内的方法。</p>
+<p>常见使用场景：</p>
+<ul>
+<li>input输入框输入搜索时。</li>
+</ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @desc 函数防抖</span></span><br><span class="line"><span class="comment"> * @param fn 函数</span></span><br><span class="line"><span class="comment"> * @param wait 延迟执行毫秒数</span></span><br><span class="line"><span class="comment"> * @param immediately true 表立即执行，false 表非立即执行</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fn, wait, immediately</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> timeout;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 使debounce 函数最终返回的函数 this 指向不变并且能接受到 e 参数。</span></span><br><span class="line">    <span class="keyword">const</span> that = <span class="keyword">this</span>;</span><br><span class="line">    <span class="keyword">const</span> args = <span class="built_in">arguments</span>;</span><br><span class="line">    <span class="keyword">if</span> (timeout) clearTimeout(timeout);</span><br><span class="line">    <span class="keyword">if</span> (immediately) &#123;</span><br><span class="line">      <span class="keyword">const</span> callNow = !timeout;</span><br><span class="line">      timeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        timeout = <span class="literal">null</span>;</span><br><span class="line">      &#125;, wait);</span><br><span class="line">      <span class="keyword">if</span> (callNow) fn.apply(that, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      timeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        fn.apply(that, args);</span><br><span class="line">      &#125;, wait);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
-<li><h4 id="函数节流（throttle）"><a href="#函数节流（throttle）" class="headerlink" title="函数节流（throttle）"></a>函数节流（throttle）</h4><p>含义：指的是连续触发事件的时候，在n秒内只执行一次。通俗点讲就是，你定义了2s的节流时间，那么在这2s内，高频的触发函数，也只会执行第一次触发的函数事件，接下来2s内的触发事件统统都不会被执行，只到下一个2s开始，才会再次执行新开始的2s内的第一个函数事件。</p>
+<li><h4 id="函数节流（throttle）"><a href="#函数节流（throttle）" class="headerlink" title="函数节流（throttle）"></a>函数节流（throttle）</h4><p>含义：</p>
+<p>​        指的是连续触发事件的时候，在n秒内只执行一次。通俗点讲就是，你定义了2s的节流时间，那么在这2s内，高频的触发函数，也只会执行第一次触发的函数事件，接下来2s内的触发事件统统都不会被执行，只到下一个2s开始，才会再次执行新开始的2s内的第一个函数事件。</p>
+<p>常见使用场景：</p>
+<ul>
+<li>用户操作保存按钮时。</li>
+<li>懒加载需要计算滚动位置时。</li>
+</ul>
 <p>对于节流一般有两种实现方式：</p>
 <ul>
 <li><p>时间戳版：</p>
