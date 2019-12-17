@@ -97,7 +97,7 @@
 <meta property="og:site_name" content="Lero">
 <meta property="og:description" content="iview框架使用过程中遇到的一些坑以及填坑结果">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-24T01:59:54.638Z">
+<meta property="og:updated_time" content="2019-12-12T07:06:20.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iview框架">
 <meta name="twitter:description" content="iview框架使用过程中遇到的一些坑以及填坑结果">
@@ -347,7 +347,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  247
+                  406
                 </span>
               
 
@@ -410,6 +410,24 @@
 <p>关于iview上的文字提示及气泡提示都是没有换行的，如果要换行必须自己设置，但是直接在Tooltip上设置它的style为whit-spce=‘normal’是不能生效的，</p>
 <p>经测试：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">slot</span>=<span class="string">"content"</span> <span class="attr">style</span>=<span class="string">"white-space: normal;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ol start="5">
+<li><p><strong>iview表单必填的*标志显示错乱</strong></p>
+<p>问题：</p>
+<p>使用iview自定义表单校验时，对于v-if显示状态的修改会影响*的显示：<br>举例：</p>
+<ul>
+<li>使用v-if设置在新增是密码字段显示，编辑时不显示</li>
+<li>这时校验规则已完成，设置只有办公电话不是必填项</li>
+<li>切换到编辑时，密码字段消失，但是办公电话前会出现*</li>
+</ul>
+<p>解决：</p>
+<p>将v-if修改为v-show，可以解决这个问题</p>
+<p>原因：</p>
+<ul>
+<li>v-if只有在条件成立时才会生成dom</li>
+<li>v-show是先生成dom，再通过css控制显示隐藏</li>
+</ul>
 </li>
 </ol>
 
@@ -541,7 +559,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">博文</span>
                 </a>
               </div>
@@ -552,7 +570,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -563,7 +581,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
