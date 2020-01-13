@@ -98,7 +98,7 @@
 <meta property="og:description" content="mpvue是一个使用vue.js开发小程序的前端框架，非常适合会vue但是没有开发过小程序的猿。but，它跟其他开源框架一样存在各种各样的坑，所以总结一下，避免重复掉坑。顺便也吐槽一下这个开源团队对于某些问题的解决态度~">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://image.lizonglin.cn/20191203173916.png">
-<meta property="og:updated_time" content="2019-12-03T09:57:04.629Z">
+<meta property="og:updated_time" content="2020-01-13T09:09:12.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mpvue脱坑指北「一」">
 <meta name="twitter:description" content="mpvue是一个使用vue.js开发小程序的前端框架，非常适合会vue但是没有开发过小程序的猿。but，它跟其他开源框架一样存在各种各样的坑，所以总结一下，避免重复掉坑。顺便也吐槽一下这个开源团队对于某些问题的解决态度~">
@@ -349,7 +349,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1k
+                  1.3k
                 </span>
               
 
@@ -365,7 +365,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  4
                 </span>
               
             </div>
@@ -403,6 +403,8 @@
 <li>将data里数据颗粒化。其实就是尽量将数据拆分成更多的key，而不是使用对象的形式。因为这样可以再一定程度上较少每次更新的数据量。</li>
 <li>减少写入data里的数据。从后端拿到数据之后，对数据进行处理优化，将视图层不需要的数据删除不再一次性写入到data。</li>
 <li>切换列表不需要实时更新时，将已经加载的列表用css的display属性隐藏而不是使用v-if。避免数据的重复加载。</li>
+<li>待实现方案：动态变更需要渲染的列表数据，即根据用户当前加载的页面来动态加载数据，例如当用户加载到第5页数据的时候，可以将第1-3页的数据先从data里删除，这样可保证每次数据变动，setdata的数据量尽可能的小。但是同步也会出现其他的问题：比如说如果是直接将不需要的数据删除的话，那么当用户返回查看的时候又需要二次加载，会造成重复加载的问题；或者说将无用的数据存放在缓存中，但是小程序的缓存又有大小限制。所以此方案需要待商榷。</li>
+<li>待实现方案：根据用户屏幕大小，动态判定每次加载数据的size大小，避免长屏幕手机第一次加载的数据不足以填充满用户手机屏幕，造成屏幕底部空白的产生。</li>
 </ol>
 <p>以上，是我的个人实践，如果有更好的解决方案或者看法，请不吝赐教。</p>
 
@@ -633,7 +635,7 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
